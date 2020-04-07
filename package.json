@@ -1,0 +1,11 @@
+{
+  "name": "j4flower",
+  "version": "1.0.0",
+  "description": "j4 flower shop ecommerce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Manuel T. Cleofe",
+  "license": "ISC"
+}
