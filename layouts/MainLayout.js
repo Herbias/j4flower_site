@@ -1,5 +1,5 @@
 import TopNavigation from "../components/Navigation/TopNavigation";
-import MiddleNavigation from "../components/Navigation/MiddileNavigation";
+import MiddleNavigation from "../components/Navigation/MiddleNavigation";
 import BottomNavigation from "../components/Navigation/BottomNavigation";
 
 export default function MainLayout(props) {
