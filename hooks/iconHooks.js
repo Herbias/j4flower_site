@@ -18,6 +18,6 @@ export const useIconHook = (icon) => {
       .catch((err) => {
         // console.log(err);
       });
-  });
+  }, []);
   return JSON.stringify(iconPath).replace(/([["])./g, "");
 };
