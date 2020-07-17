@@ -1,0 +1,12 @@
+[{
+    "id": 0,
+    "image": "/img/slide1.jpg",
+    "header": "Lorem Ipsum",
+    "paragraph": "Dorseit amit"
+
+}, {
+    "id": 1,
+    "image": "/img/slide2.jpg",
+    "header": "Ipsum Lorem",
+    "paragraph": "amit Dorseit"
+}]
