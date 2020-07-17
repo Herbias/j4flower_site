@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import "./nav.css";
+@import "./carousel.css";
