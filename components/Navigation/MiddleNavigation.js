@@ -9,9 +9,9 @@ const MiddleNavigation = (props) => {
 
   return (
     <div className="w-full m-6 flex items-center">
-      <div className="w-1/4 flex items-center content-center justify-center">
+      <div className="w-1/4 mt-2 flex items-center content-center justify-center">
         <CustomButton
-          classNames={"border-4 rounded-full mr-2"}
+          classNames={"border-2 border-white rounded-full mr-2"}
           size={12}
           view={24}
           icon={logo}
