@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect, useCallback } from "react";
 import Dropdown from "./Navigation/Dropdown";
 
 export default function CustomButton(props) {
-  const { classNames, size, view, icon, type, title } = props;
+  const { classNames, size, view, icon, type, title, styles } = props;
   const [dropdownDisplayed, displayDropdown] = useState(false);
   const [toggleDropdown, setDropdown] = useState(false);
 
@@ -33,6 +33,7 @@ export default function CustomButton(props) {
         className={classNames + " cursor-pointer"}
         onMouseEnter={MountDropdown}
         onMouseLeave={UnMountDropdown}
+        style={styles}
       >
         <svg
           className={size && `fill-current h-${size} w-${size} m-auto`}
