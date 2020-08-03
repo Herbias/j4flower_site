@@ -1,0 +1,19 @@
+{
+  "categories": [
+    { "name": "set", "altName": "Set" },
+    { "name": "memory", "altName": "RAM" },
+    { "name": "gpu", "altName": "GPU" },
+    { "name": "motherboad", "altName": "M. Brd" },
+    { "name": "cpu", "altName": "CPU" },
+    { "name": "storage", "altName": "Storage" },
+    { "name": "psu", "altName": "PSU" },
+    { "name": "cooler", "altName": "Cooler" },
+    { "name": "avr", "altName": "V. Reg." },
+    { "name": "case", "altName": "Case" },
+    { "name": "keyboard", "altName": "K. Board" },
+    { "name": "mouse", "altName": "Mouse" },
+    { "name": "monitor", "altName": "Monitor" },
+    { "name": "accessories", "altName": "Accrs." },
+    { "name": "printer", "altName": "Printer" }
+  ]
+}
