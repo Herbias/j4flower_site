@@ -12,6 +12,7 @@ module.exports = {
   },
   variants: {
     textIndent: ["responsive"],
+    ellipsis: ["responsive"],
   },
-  plugins: [require("tailwindcss-typography")],
+  plugins: [require("tailwindcss-typography")({ ellipsis: true })],
 };
