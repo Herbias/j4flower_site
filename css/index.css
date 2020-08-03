@@ -4,3 +4,15 @@
 
 @import "./nav.css";
 @import "./carousel.css";
+
+.bg-active {
+  background: #20d1c3;
+}
+
+.border-active {
+  border-color: #20d1c3;
+}
+
+.text-active {
+  color: #20d1c3;
+}
