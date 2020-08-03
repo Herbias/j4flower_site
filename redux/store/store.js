@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
-import { HYDRATE, createWrapper } from 'next-redux-wrapper'
+import { HYDRATE, createWrapper } from "next-redux-wrapper";
 
 import rootReducer from "../reducers/index";
 
@@ -12,21 +12,28 @@ const bindMiddleware = (middleware) => {
 };
 
 const reducer = (state, action) => {
-  console.log(state);
+  console.log(action);
   if (action.type === HYDRATE) {
     const nextState = {
       ...state, // use previous state
       ...action.payload, // apply delta from hydration
+    };
+    if (state) {
+      if (state.UserReducer) nextState.UserReducer = state.UserReducer;
+      if (state.QuickBuildReducer)
+        nextState.QuickBuildReducer = state.QuickBuildReducer;
     }
-    //if (state.count) nextState.count = state.count // preserve count value on client side navigation
-    return nextState
-  } else {
-    return rootReducer(state, action)
-  }
-}
 
-const initStore = () => {
-  return createStore(rootReducer, bindMiddleware([]));
+    //if (state.count) nextState.count = state.count // preserve count value on client side navigation
+
+    return nextState;
+  } else {
+    return rootReducer(state, action);
+  }
 };
 
-export const wrapper = createWrapper(initStore)
+const initStore = () => {
+  return createStore(reducer, bindMiddleware([]));
+};
+
+export const wrapper = createWrapper(initStore);
