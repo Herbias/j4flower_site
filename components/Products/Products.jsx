@@ -1,7 +1,6 @@
 import ProductCard from "./ProductCard";
 import { useState, useEffect } from "react";
 
-import { useFilterProductHook } from "../../hooks/filterProductHook";
 import { useSelector } from "react-redux";
 
 const Product = (props) => {
@@ -9,8 +8,6 @@ const Product = (props) => {
   const currentCategory = useSelector(
     (state) => state.QuickBuildReducer.quickBuild.category
   );
-
-  const [isLoading, filterProduct] = useFilterProductHook(selected);
 
   return (
     <div className="h-1/2 flex flex-wrap p-5 relative">
