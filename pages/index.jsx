@@ -4,16 +4,17 @@ import QuickBuild from "../layouts/QuickBuild";
 import Filter from "../components/Filter/Filter";
 import Products from "../components/Products/Products";
 
-import { useDispatch, connect, useSelector } from "react-redux";
-import { QuickBuildOpen, SetProducts } from "../redux/actions/QuickBuildAction";
-import { bindActionCreators } from "redux";
+import { useSelector } from "react-redux";
 
 import { useState, useCallback, useEffect } from "react";
-import fetch from "isomorphic-unfetch";
 import { useProductsHook } from "../hooks/productsHook";
 
+import socketIOClient from "socket.io-client";
+
+const ENDPOINT = "http://localhost:3001";
+const socket = socketIOClient(ENDPOINT);
+
 const Index = (props) => {
-  const dispatch = useDispatch();
   const quickBuild = useSelector((state) => state.QuickBuildReducer.quickBuild);
   // let selected = null;
   const [selected, setSelected] = useState(null);
@@ -21,25 +22,43 @@ const Index = (props) => {
     quickBuild.category,
     selected ? selected : null
   );
+  const [deviceData, setDeviceData] = useState(null);
 
-  const HandleChange = useCallback((name, value) => {
-    console.log(`${name} ${value}`);
+  const HandleChange = useCallback(async (name, value) => {
     setSelected({ ...selected, [name]: value });
-    // selected[name] = value;
+  });
+
+  useEffect(() => {
+    if (!localStorage.getItem("guestId"))
+      setDeviceData({
+        os: window.navigator.oscpu,
+        browser: window.navigator.userAgent,
+      });
+  }, []);
+
+  useEffect(() => {
+    if (deviceData) socket.emit("visit", deviceData);
+  }, [deviceData]);
+
+  useEffect(() => {
+    socket.on("visitor", (data) => {
+      if (!localStorage.getItem("guestId"))
+        localStorage.setItem("guestId", data);
+    });
   });
 
   useEffect(() => {
     setSelected(null);
   }, [quickBuild.category]);
 
-  useEffect(() => {
-    console.log(selected);
-    console.log(products);
-  });
+  // useEffect(() => {
+  //   console.log(selected);
+  //   console.log(products);
+  // });
 
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+  // useEffect(() => {
+  //   console.log(products);
+  // }, [products]);
 
   return (
     <MainLayout>
@@ -55,12 +74,6 @@ const Index = (props) => {
       <div></div>
     </MainLayout>
   );
-};
-
-const mapDispatchToprops = (dispatch) => {
-  return {
-    test: bindActionCreators(QuickBuildOpen, dispatch),
-  };
 };
 
 export default React.memo(Index);
