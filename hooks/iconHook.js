@@ -1,7 +1,4 @@
-import {
-  useState,
-  useEffect
-} from "react";
+import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 
 export const useIconHook = (icon) => {
@@ -18,9 +15,7 @@ export const useIconHook = (icon) => {
       .then((data) => {
         setIconPath(data);
       })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   useEffect(() => {
@@ -28,4 +23,4 @@ export const useIconHook = (icon) => {
   }, [icon]);
 
   return JSON.stringify(iconPath).replace(/([["])./g, "");
-}
+};

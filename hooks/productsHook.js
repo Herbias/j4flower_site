@@ -6,7 +6,6 @@ export const useProductsHook = (category, data) => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    console.log(`products ${data}`);
     if (category && data == null)
       fetch(`http://localhost:3001/get/product/` + category)
         .then((res) => {
@@ -22,7 +21,6 @@ export const useProductsHook = (category, data) => {
         })
         .catch((err) => {
           setLoading(false);
-          // console.log(err);
         });
 
     if (category && data) {
@@ -32,10 +30,12 @@ export const useProductsHook = (category, data) => {
 
       let b = [];
       a.forEach((obj) => {
-        b.push(`${obj}=` + data[obj]);
+        if (data[obj] != "" && data[obj] != null) {
+          b.push(`${obj}=` + data[obj]);
+        } else delete data[obj];
       });
 
-      let c = b.length > 1 ? b.join("&") : b[0];
+      let c = b.length > 1 ? b.join("&") : b.join("").trim();
 
       fetch(`http://localhost:3001/get/product/${category}\?${c}`)
         .then((res) => {
@@ -51,24 +51,9 @@ export const useProductsHook = (category, data) => {
         })
         .catch((err) => {
           setLoading(false);
-          // console.log(err);
         });
-      console.log(c);
     }
-  }, [category, data]);
-
-  const getQuery = (category, data) => {
-    return new Promise((resolve) => {
-      let a = Object.keys(data);
-
-      let b = [];
-      a.forEach((obj) => {
-        b.push(`${obj}=` + data[obj]);
-      });
-      let c = b.length > 1 ? b.join("&") : b[0];
-      resolve(`https://localhost:3001/api/products/${category}\?${c}`);
-    });
-  };
+  }, [category && data, category, data]);
 
   useEffect(() => {
     console.log("Component did update");

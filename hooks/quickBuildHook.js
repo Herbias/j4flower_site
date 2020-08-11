@@ -15,9 +15,7 @@ export const useQuickBuildHook = () => {
       .then((data) => {
         setCategories(data.categories);
       })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   useEffect(() => {
