@@ -12,18 +12,6 @@ const Filter = (props) => {
   return (
     <div className="flex bg-active text-white">
       <div className="flex items-center justify-end w-full h-10">
-        {/* {products &&
-          Object.keys(products.filter).map((elm, index) => {
-            return (
-              <FilterItem
-                key={index}
-                name={elm}
-                selected={selected ? selected[elm] : " "}
-                option={products.filter[elm]}
-                handleChange={handleChange}
-              />
-            );
-          })} */}
         {filters &&
           Object.keys(filters).map((elm, index) => {
             return (
