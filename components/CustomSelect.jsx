@@ -26,6 +26,12 @@ const OptionBox = (props) => {
 
   return (
     <div className="w-full mt-8 z-10 border border-grey-200 bg-white absolute top-0 left-0 mt-8 z-10">
+      <p
+        className="h-6 border-b border-gray-200 px-2 hover:bg-blue-200 hover:text-white cursor-pointer"
+        onClick={(e) => {
+          handleChange(name, null);
+        }}
+      ></p>
       {option &&
         option.map((elm, index) => {
           return (
