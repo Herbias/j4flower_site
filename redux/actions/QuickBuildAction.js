@@ -1,5 +1,4 @@
 const QuickBuildOpen = (isOpen, title, category) => {
-  console.log(category);
   return {
     type: "QUICK_BUILD_OPEN",
     payload: {

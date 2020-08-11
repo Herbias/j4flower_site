@@ -11,7 +11,6 @@ const initState = {
 };
 
 export default function IndexState(state = initState, action) {
-  console.log(action);
   switch (action.type) {
     case "QUICK_BUILD_OPEN":
       return {

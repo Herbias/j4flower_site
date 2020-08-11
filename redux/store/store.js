@@ -12,7 +12,6 @@ const bindMiddleware = (middleware) => {
 };
 
 const reducer = (state, action) => {
-  console.log(action);
   if (action.type === HYDRATE) {
     const nextState = {
       ...state, // use previous state
@@ -20,8 +19,9 @@ const reducer = (state, action) => {
     };
     if (state) {
       if (state.UserReducer) nextState.UserReducer = state.UserReducer;
-      if (state.QuickBuildReducer)
+      else if (state.QuickBuildReducer)
         nextState.QuickBuildReducer = state.QuickBuildReducer;
+      else if (state.CartReducer) nextState.CartReducer = state.CartReducer;
     }
 
     //if (state.count) nextState.count = state.count // preserve count value on client side navigation
