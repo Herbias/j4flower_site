@@ -2,7 +2,7 @@ const CarouselIndicator = (props) => {
   const { slides, status, goTo } = props;
   return (
     <>
-      <ol className="absolute flex bottom-0 justify-center text-white w-full">
+      <ol className="absolute z-0 flex bottom-0 justify-center text-white w-full">
         {slides &&
           slides.map((elm, index) => {
             return (
