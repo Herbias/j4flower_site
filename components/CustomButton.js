@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect, useCallback } from "react";
 import Dropdown from "./Navigation/Dropdown";
 
 export default function CustomButton(props) {
-  const { classNames, size, view, icon, type, title, styles } = props;
+  const { classNames, size, view, icon, type, title, styles, data } = props;
   const [dropdownDisplayed, displayDropdown] = useState(false);
   const [toggleDropdown, setDropdown] = useState(false);
 
