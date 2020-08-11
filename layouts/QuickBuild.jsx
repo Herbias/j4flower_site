@@ -1,12 +1,8 @@
 import CustomButton from "../components/CustomButton";
 import { useIconHook } from "../hooks/iconHook";
-import { useQuickBuildHook } from "../hooks/quickBuildHook";
 
-import { QuickBuildOpen, SetProducts } from "../redux/actions/QuickBuildAction";
+import { QuickBuildOpen } from "../redux/actions/QuickBuildAction";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useProductsHook } from "../hooks/productsHook";
-
 const Items = (props) => {
   const { icon, title, category } = props;
 
@@ -59,7 +55,6 @@ const Items = (props) => {
 React.memo(Items);
 
 const QuickBuild = (props) => {
-  const dispatch = useDispatch();
   const quickBuild = useSelector((state) => state.QuickBuildReducer.quickBuild);
 
   const setIcon = useIconHook("set");
