@@ -1,6 +1,15 @@
 @responsive {
-    .bg-nav {
-        background: rgb(32,209,195);
-        background: linear-gradient(to bottom, #38dbef 0%, #20d1c3 100%);
-    }
+  .bg-nav {
+    background: rgb(32, 209, 195);
+    background: linear-gradient(to bottom, #38dbef 0%, #20d1c3 100%);
+  }
+
+  .dropdown-button:hover .dropdown-content {
+    display: block;
+    visibility: visible;
+  }
+  .dropdown-content {
+    /* display: none; */
+    visibility: hidden;
+  }
 }

@@ -1,31 +1,12 @@
-import {
-    useState,
-    useEffect
-} from "react";
+import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
+import data from "../pages/api/contents/carousel.json";
 
 export const useCarouselHook = () => {
-    const [slides, setSlides] = useState(null);
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/contents/carousel`)
-            .then((res) => {
-                try {
-                    return res.json();
-                } catch (err) {
-                    console.warn(e);
-                }
-            })
-            .then((data) => {
-                setSlides(data);
-            })
-            .catch((err) => {
-                // console.log(err);
-            });
-    }, []);
+  const [slides, setSlides] = useState(null);
+  useEffect(() => {
+    setSlides(data);
+  }, []);
 
-    useEffect(() => {
-        console.log("Component did update");
-    }, [slides]);
-
-    return slides;
-}
+  return slides;
+};

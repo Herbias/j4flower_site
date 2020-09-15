@@ -12,4 +12,11 @@ const ToUpdate = (toUpdate) => {
   };
 };
 
-export { AddToCart, ToUpdate };
+const UpdateCartItems = (count) => {
+  return {
+    type: "UPDATE_CART_ITEMS",
+    payload: count,
+  };
+};
+
+export { AddToCart, ToUpdate, UpdateCartItems };

@@ -4,10 +4,10 @@ import "../css/index.css";
 
 import { wrapper } from "../redux/store/store";
 
-import socketIOClient from "socket.io-client";
+// import socketIOClient from "socket.io-client";
 
-const ENDPOINT = "http://localhost:3001";
-const socket = socketIOClient(ENDPOINT);
+// const ENDPOINT = "http://localhost:3001";
+// const socket = socketIOClient(ENDPOINT);
 
 const MyApp = (props) => {
   const { Component, pageProps, store } = props;

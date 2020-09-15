@@ -2,6 +2,8 @@ const initState = {
   product: {},
   toUpdate: false,
   quantity: 0,
+  showMiniCart: false,
+  cartItems: null,
 };
 
 export default function cartState(state = initState, action) {
@@ -15,6 +17,8 @@ export default function cartState(state = initState, action) {
       };
     case "UPDATE_CART":
       return { ...state, toUpdate: action.payload };
+    case "UPDATE_CART_ITEMS":
+      return { ...state, cartItems: action.payload };
     default:
       return state;
   }

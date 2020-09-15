@@ -2,6 +2,7 @@ import FilterItem from "./FilterItem";
 import { useFiltersHook } from "../../hooks/filtersHook";
 
 import { useSelector } from "react-redux";
+import MainLayout from "../../layouts/MainLayout";
 
 const Filter = (props) => {
   const quickBuild = useSelector((state) => state.QuickBuildReducer.quickBuild);
@@ -10,8 +11,8 @@ const Filter = (props) => {
 
   const [isLoading, filters] = useFiltersHook(quickBuild.category);
   return (
-    <div className="flex bg-active text-white">
-      <div className="flex items-center justify-end w-full h-10">
+    <div className="flex p-1 h-auto bg-active text-white">
+      <div className="flex flex-wrap items-center justify-end w-full h-auto">
         {filters &&
           Object.keys(filters).map((elm, index) => {
             return (

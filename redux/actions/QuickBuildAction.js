@@ -16,4 +16,11 @@ const SetProducts = (products, filters) => {
   };
 };
 
-export { QuickBuildOpen, SetProducts };
+const SetCategory = (category) => {
+  return {
+    type: "SET_CATEGORY",
+    payload: { quickBuild: { category: category } },
+  };
+};
+
+export { QuickBuildOpen, SetProducts, SetCategory };

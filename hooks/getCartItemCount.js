@@ -2,24 +2,25 @@ import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 import { useSelector } from "react-redux";
 
-export const useGetCartItemCount = () => {
+export const useGetCartItemCount = (isLogin) => {
   const [isLoading, setLoading] = useState(false);
   const [noOfItems, setNoOfItems] = useState(null);
   const user = useSelector((state) => state.UserReducer);
-  const cart = useSelector((state) => state.CartReducer);
 
   useEffect(() => {
     setLoading(true);
-  }, []);
-
-  if (isLoading) {
-    fetch(
-      `http://localhost:3001/get/cart/itemscount?userId=${
+    fetch(`http://localhost:3001/get/cart/itemscount`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(
         user.isLogin
-          ? user.id + `&userType=registerd`
-          : localStorage.getItem("guestId") + `&userType=guest`
-      }`
-    )
+          ? { userId: user.data.userid, userType: "registered" }
+          : {
+              userId: localStorage.getItem("guestId"),
+              userType: "guest",
+            }
+      ),
+    })
       .then((res) => {
         try {
           return res.json();
@@ -28,24 +29,16 @@ export const useGetCartItemCount = () => {
         }
       })
       .then((res) => {
-        if (noOfItems != res) {
-          setLoading(false);
-          setNoOfItems(res);
-        }
+        setNoOfItems(res);
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
+        setNoOfItems(false);
       });
-  }
+  }, [isLogin]);
 
   useEffect(() => {
-    setLoading(true);
-  }, [cart.toUpdate]);
-
-  useEffect(() => {
-    console.log("Component did update");
-  }, [isLoading]);
+    setLoading(false);
+  }, [noOfItems]);
 
   return [isLoading, noOfItems];
 };

@@ -1,39 +1,54 @@
 import MainLayout from "../../../../layouts/MainLayout";
-import { useRouter } from "next/router";
-import { useGetProductDetailsHook } from "../../../../hooks/getProductDetailsHook";
 import CustomButton from "../../../../components/CustomButton";
 import { useIconHook } from "../../../../hooks/iconHook";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AddToCart } from "../../../../redux/actions/CartAction";
 import { useAddToCartHook } from "../../../../hooks/addToCartHook";
 
+import Link from "next/link";
+
 const ProductPage = (props) => {
-  const heartIcon = useIconHook("heart");
+  const backButton = useIconHook("chevronLeft");
+  const cartIcon = useIconHook("cart");
   const [quantity, setQuantity] = useState(1);
 
   const dispatach = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
-  const [loading, success] = useAddToCartHook(props.product);
+
+  const [addItem, setAddItem] = useState(null);
+  const [loading, success] = useAddToCartHook(addItem ? addItem : null);
+
+  const addToCart = (toUpdate, quantity, data) => {
+    console.log(data);
+    setAddItem(data);
+    dispatach(AddToCart(toUpdate, quantity, data));
+  };
+
+  useEffect(() => {
+    if (success) setAddItem(null);
+  }, [loading]);
 
   return (
     <MainLayout>
       <div className="flex items-center border-b border-teal-400 bg-gray-200">
         <CustomButton
           classNames="flex w-16 h-10 p-full ml-6 bg-teal-300 text-white cursor-pointer"
-          size="5"
-          view="20"
-          icon={heartIcon}
+          size="10"
+          view="24"
+          icon={backButton}
         />
         <div className="flex items-center w-full pl-4">
           {" "}
           <a className="text-teal-400 capitalize" href="/">
             Shop &#8594; &nbsp;
           </a>
-          <a className="text-teal-400 capitalize">
-            {props.product.categoryName} &#8594; &nbsp;
-          </a>
+          <Link href={`/${props.product.categoryName}`}>
+            <a className="text-teal-400 capitalize">
+              {props.product.categoryName} &#8594; &nbsp;
+            </a>
+          </Link>
           <a className="text-teal-400 capitalize">{`${props.product.brand} ${props.product.name}`}</a>
         </div>
       </div>
@@ -77,7 +92,8 @@ const ProductPage = (props) => {
               <div
                 className="flex items-center border border-teal-300 cursor-pointer"
                 onClick={(e) => {
-                  dispatach(AddToCart(true, quantity, props.product));
+                  addToCart(true, quantity, props.product);
+                  // dispatach(AddToCart(true, quantity, props.product));
                 }}
               >
                 {" "}
@@ -85,7 +101,7 @@ const ProductPage = (props) => {
                   classNames="flex w-12 h-8 p-full bg-teal-300 text-white cursor-pointer"
                   size="5"
                   view="20"
-                  icon={heartIcon}
+                  icon={cartIcon}
                   data={props.product}
                 />
                 <span className="text-teal-400 mx-2">Add To Cart</span>

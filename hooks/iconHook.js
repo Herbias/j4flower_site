@@ -1,26 +1,20 @@
 import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 
+import icons from "../pages/api/icons/icons.json";
+
 export const useIconHook = (icon) => {
   const [iconPath, setIconPath] = useState(null);
-  useEffect(() => {
-    fetch(`http://localhost:3000/api/icons/${icon}`)
-      .then((res) => {
-        try {
-          return res.json();
-        } catch (err) {
-          console.warn(e);
-        }
-      })
-      .then((data) => {
-        setIconPath(data);
-      })
-      .catch((err) => {});
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
-    console.log("Component did update");
+    if (icon)
+      setIconPath(
+        icons.filter((elm) => {
+          return elm[icon];
+        })
+      );
   }, [icon]);
 
-  return JSON.stringify(iconPath).replace(/([["])./g, "");
+  if (iconPath) return iconPath[0][icon]["path"];
 };

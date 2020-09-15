@@ -27,9 +27,9 @@ const Items = (props) => {
           )
         }
       >
-        <div className="p2">
+        <div className="p-2 text-gray-700">
           <CustomButton
-            classNames={"rounded-full border border-black p-2 ".concat(
+            classNames={"rounded-full border border-gray-900 p-2 ".concat(
               category == quickBuild.category &&
                 quickBuild.isOpen &&
                 "border-b-2 border-active text-active"
@@ -74,7 +74,7 @@ const QuickBuild = (props) => {
   const printerIcon = useIconHook("printer");
   return (
     <>
-      <div className="h-32 bg-gray-200 shadow-xl flex items-center content-center justify-center">
+      <div className="h-32 bg-gray-100 shadow flex items-center content-center justify-center">
         <Items icon={setIcon} title={"Set"} category={"set"} />
         <Items icon={memoryIcon} title={"RAM"} category={"ram"} />
         <Items icon={gpuIcon} title={"GPU"} category={"gpu"} />

@@ -22,6 +22,11 @@ export default function IndexState(state = initState, action) {
         ...state,
         ...action.payload,
       };
+    case "SET_CATEGORY":
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
   }

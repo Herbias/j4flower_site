@@ -22,6 +22,8 @@ const reducer = (state, action) => {
       else if (state.QuickBuildReducer)
         nextState.QuickBuildReducer = state.QuickBuildReducer;
       else if (state.CartReducer) nextState.CartReducer = state.CartReducer;
+      else if (state.UserInterfaceReducer)
+        nextState.UserInterfaceReducer = state.UserInterfaceReducer;
     }
 
     //if (state.count) nextState.count = state.count // preserve count value on client side navigation

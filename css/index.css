@@ -16,3 +16,8 @@
 .text-active {
   color: #20d1c3;
 }
+
+.bg-footer {
+  background: #38dbef;
+  background: linear-gradient(to bottom, #20d1c3 0%, #38dbef 100%);
+}

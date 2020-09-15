@@ -1,10 +1,13 @@
 import { Fragment, useState, useEffect, useCallback } from "react";
+import { useSelector } from "react-redux";
 import Dropdown from "./Navigation/Dropdown";
 
 export default function CustomButton(props) {
   const { classNames, size, view, icon, type, title, styles, data } = props;
   const [dropdownDisplayed, displayDropdown] = useState(false);
   const [toggleDropdown, setDropdown] = useState(false);
+
+  const userInterface = useSelector((state) => state.UserInterfaceReducer);
 
   const MountDropdown = (shouldMount) => {
     displayDropdown(true);
@@ -31,8 +34,8 @@ export default function CustomButton(props) {
     <Fragment>
       <div
         className={classNames + " cursor-pointer"}
-        onMouseEnter={MountDropdown}
-        onMouseLeave={UnMountDropdown}
+        // onMouseEnter={MountDropdown}
+        // onMouseLeave={UnMountDropdown}
         style={styles}
       >
         <svg
@@ -44,9 +47,14 @@ export default function CustomButton(props) {
           <path d={icon} />
         </svg>
       </div>
-      {type == "dropdown" && dropdownDisplayed && (
+      {/* {type == "dropdown" && userInterface.showMiniCart && (
         <Dropdown title={title} Show={ShowDropDown} Hide={HideDropDown} />
-      )}
+      )} */}
+
+      {/* <Dropdown title={title} Show={ShowDropDown} Hide={HideDropDown} /> */}
+      {/* {type == "dropdown" && dropdownDisplayed && (
+        <Dropdown title={title} Show={ShowDropDown} Hide={HideDropDown} />
+      )} */}
     </Fragment>
   );
 }

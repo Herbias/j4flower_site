@@ -2,21 +2,35 @@ import { useIconHook } from "../../hooks/iconHook";
 import CustomButton from "../CustomButton";
 
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { AddToCart, ToUpdate } from "../../redux/actions/CartAction";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AddToCart,
+  ToUpdate,
+  UpdateCartItems,
+} from "../../redux/actions/CartAction";
 import { useAddToCartHook } from "../../hooks/addToCartHook";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ProductCard = (props) => {
   const { name, image, price, index, data } = props;
   const heartIcon = useIconHook("heart");
 
+  const cart = useSelector((state) => state.CartReducer);
   const dispatch = useDispatch();
-  const [loading, success] = useAddToCartHook(data);
+  const [addItem, setAddItem] = useState(null);
+  const [loading, success] = useAddToCartHook(addItem ? addItem : null);
+
+  const addToCart = (data) => {
+    setAddItem(data);
+    dispatch(AddToCart(true, 1, data));
+  };
 
   useEffect(() => {
-    dispatch(ToUpdate(false));
-  }, [success]);
+    if (success) {
+      setAddItem(null);
+      dispatch(UpdateCartItems(success));
+    }
+  }, [loading]);
 
   return (
     <div
@@ -39,7 +53,7 @@ const ProductCard = (props) => {
       </div>
       <div
         className="flex items-center justify-center content-center"
-        onClick={(e) => dispatch(AddToCart(true, 1, data))}
+        onClick={(e) => addToCart(data)}
       >
         <div className="flex content-center self-auto items-center">
           <CustomButton
