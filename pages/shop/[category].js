@@ -1,14 +1,14 @@
 import { useState, useCallback, useEffect } from "react";
-import { useProductsHook } from "../hooks/productsHook";
-import { useIconHook } from "../hooks/iconHook";
-import Products from "../components/Products/Products";
-import CustomButton from "../components/CustomButton";
+import { useProductsHook } from "../../hooks/productsHook";
+import { useIconHook } from "../../hooks/iconHook";
+import Products from "../../components/Products/Products";
+import CustomButton from "../../components/CustomButton";
 
 import { useSelector, useDispatch } from "react-redux";
-import { SetCategory } from "../redux/actions/QuickBuildAction";
+import { SetCategory } from "../../redux/actions/QuickBuildAction";
 
-import Filter from "../components/Filter/Filter";
-import MainLayout from "../layouts/MainLayout";
+import Filter from "../../components/Filter/Filter";
+import MainLayout from "../../layouts/MainLayout";
 import { useRouter } from "next/router";
 
 const ProductList = (props) => {

@@ -1,3 +1,4 @@
+import { Router, useRouter } from "next/router";
 import { Fragment, useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import Dropdown from "./Navigation/Dropdown";
@@ -6,7 +7,7 @@ export default function CustomButton(props) {
   const { classNames, size, view, icon, type, title, styles, data } = props;
   const [dropdownDisplayed, displayDropdown] = useState(false);
   const [toggleDropdown, setDropdown] = useState(false);
-
+  const router = useRouter();
   const userInterface = useSelector((state) => state.UserInterfaceReducer);
 
   const MountDropdown = (shouldMount) => {
@@ -33,6 +34,9 @@ export default function CustomButton(props) {
   return (
     <Fragment>
       <div
+        onClick={() => {
+          type == "dropdown" && router.push("/cart");
+        }}
         className={classNames + " cursor-pointer"}
         // onMouseEnter={MountDropdown}
         // onMouseLeave={UnMountDropdown}

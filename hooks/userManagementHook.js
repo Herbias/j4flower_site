@@ -39,7 +39,6 @@ export const useUserManagementHook = () => {
     if (!user.isLogin && !localStorage.getItem("isLogin")) {
       //   localStorage.setItem("isLogin", false);
       //   localStorage.removeItem("user");
-      console.log("hello");
     }
   }, [user.isLogin]);
 

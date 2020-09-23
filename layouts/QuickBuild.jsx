@@ -75,7 +75,7 @@ const QuickBuild = (props) => {
   return (
     <>
       <div className="h-32 bg-gray-100 shadow flex items-center content-center justify-center">
-        <Items icon={setIcon} title={"Set"} category={"set"} />
+        {/* <Items icon={setIcon} title={"Set"} category={"set"} /> */}
         <Items icon={memoryIcon} title={"RAM"} category={"ram"} />
         <Items icon={gpuIcon} title={"GPU"} category={"gpu"} />
         <Items

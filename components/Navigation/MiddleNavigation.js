@@ -10,11 +10,12 @@ import { useEffect, useState } from "react";
 
 import { ToUpdate, UpdateCartItems } from "../../redux/actions/CartAction";
 import Dropdown from "./Dropdown";
+import { useGetCartItem } from "../../hooks/getCartItemHook";
 
 const MiddleNavigation = (props) => {
   const searchIcon = useIconHook("search");
   const cartIcon = useIconHook("cart");
-  const logo = useIconHook("logo");
+  const logo = useIconHook("logo2");
 
   const router = useRouter();
 
@@ -26,9 +27,7 @@ const MiddleNavigation = (props) => {
   // const [count, setCount] = useState(null);
   // const [update, setUpdate] = useState(null);
 
-  const [loading, cartItemCount] = useGetCartItemCount(
-    user ? user.isLogin : null
-  );
+  const [loading, cartItemCount] = useGetCartItemCount(user.isLogin);
 
   useEffect(() => {
     if (cartItemCount) {
@@ -36,20 +35,14 @@ const MiddleNavigation = (props) => {
     }
   }, [cartItemCount]);
 
-  // useEffect(() => {
-  //   setCount(cartItemCount);
-  // }, [cartItemCount]);
-
-  // useEffect(() => {
-  //   setUpdate(null);
-  // }, [count]);
+  useEffect(() => {}, [cart]);
 
   return (
     <div className="w-full m-6 pt-4 flex items-center">
       <Link href="/">
         <a className="w-1/4 flex items-center content-center justify-center cursor-pointer">
           <CustomButton
-            classNames={"border-2 border-white rounded-full mr-2"}
+            classNames={"border-2 border-white rounded-full mr-2 p-2"}
             size={12}
             view={24}
             icon={logo}
@@ -73,36 +66,35 @@ const MiddleNavigation = (props) => {
           />
         </div>
       </div>
-      <Link href="/cart">
-        <div
-          onMouseEnter={() => {
-            dispatch(ShowMiniCart(true));
-          }}
-          onMouseLeave={() => {
-            dispatch(ShowMiniCart(false));
-          }}
-          className="dropdown-button w-1/4 px-16 flex justify-around"
-        >
-          <div className="w-2/4 text-center relative inline-block">
-            {cart.cartItems > 0 && (
-              <div className="absolute z-10 flex justify-center items-center content-center mr-2 w-6 h-6 top-0 right-0 bg-yellow-200 border border-b rounded-full">
-                <p className="w-full text-gray-600 text-center font-bold">
-                  {cart.cartItems}
-                </p>
-              </div>
-            )}
-            <CustomButton
-              classNames="h-10 w-10 p-2 inline-block border-white border-2 rounded-full"
-              size={5}
-              view={20}
-              icon={cartIcon}
-              type="dropdown"
-              title="Cart"
-            />
-            {ui.showMiniCart && <Dropdown title={"Cart"} />}
-          </div>
+
+      <div
+        onMouseEnter={() => {
+          dispatch(ShowMiniCart(true));
+        }}
+        onMouseLeave={() => {
+          dispatch(ShowMiniCart(false));
+        }}
+        className="dropdown-button w-1/4 px-16 flex justify-around"
+      >
+        <div className="w-2/4 text-center relative inline-block">
+          {cart.cartItems > 0 && (
+            <div className="absolute z-10 flex justify-center items-center content-center mr-2 w-6 h-6 top-0 right-0 bg-yellow-200 border border-b rounded-full">
+              <p className="w-full text-gray-600 text-center font-bold">
+                {cart.cartItems}
+              </p>
+            </div>
+          )}
+          <CustomButton
+            classNames="h-10 w-10 p-2 inline-block border-white border-2 rounded-full"
+            size={5}
+            view={20}
+            icon={cartIcon}
+            type="dropdown"
+            title="Cart"
+          />
+          {ui.showMiniCart && <Dropdown title={"Cart"} />}
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

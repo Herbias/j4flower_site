@@ -11,7 +11,10 @@ export const useGetCartItemCount = (isLogin) => {
     setLoading(true);
     fetch(`http://localhost:3001/get/cart/itemscount`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(
         user.isLogin
           ? { userId: user.data.userid, userType: "registered" }
@@ -32,6 +35,7 @@ export const useGetCartItemCount = (isLogin) => {
         setNoOfItems(res);
       })
       .catch((err) => {
+        console.log(err);
         setNoOfItems(false);
       });
   }, [isLogin]);

@@ -23,14 +23,17 @@ export const useProductsHook = (category, data) => {
           setLoading(false);
         });
 
-    if (category && data) {
+    if ((category && data) || typeof data == "number") {
       let query = "";
 
       let a = Object.keys(data);
 
       let b = [];
       a.forEach((obj) => {
-        if (data[obj] != "" && data[obj] != null) {
+        if (
+          (data[obj] != "" && data[obj] != null) ||
+          typeof data[obj] == "number"
+        ) {
           b.push(`${obj}=` + data[obj]);
         } else delete data[obj];
       });
@@ -55,9 +58,7 @@ export const useProductsHook = (category, data) => {
     }
   }, [category && data, category, data]);
 
-  useEffect(() => {
-    console.log("Component did update");
-  }, [products]);
+  useEffect(() => {}, [products]);
 
   return [isLoading, products];
 };

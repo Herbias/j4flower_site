@@ -9,7 +9,6 @@ export const useCreateOrderHook = (data, delivery) => {
   useEffect(() => {
     if (data) {
       setLoading(true);
-      console.log(data);
     }
   }, [data]);
 

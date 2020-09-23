@@ -1,26 +1,20 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-export const useGetOrderDeatilHook = (data) => {
+export const useGetOrderHook = (data) => {
   const user = useSelector((state) => state.UserReducer);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (data) {
+    if (user.data) {
       setLoading(true);
     }
-  }, [data]);
+  }, [user]);
 
   useEffect(() => {
-    if (isLoading) {
-      data["userid"] = user.data.userid;
-
-      fetch(`http://localhost:3001/get/order/detail`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
+    if (isLoading)
+      fetch(`http://localhost:3001/get/order/${user.data.userid}`)
         .then((res) => {
           try {
             if (res.status == 200) {
@@ -33,14 +27,11 @@ export const useGetOrderDeatilHook = (data) => {
         .then((res) => {
           setSuccess(res);
         });
-    }
   }, [isLoading]);
 
   useEffect(() => {
-    if (isSuccess) {
-      setLoading(false);
-    }
-  }, [isSuccess]);
+    if (isSuccess) setLoading(false);
+  });
 
   return [isLoading, isSuccess];
 };

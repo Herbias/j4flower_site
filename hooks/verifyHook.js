@@ -20,7 +20,6 @@ export const useVerifyHook = (name, value) => {
       })
       .then((res) => {
         setLoading(false);
-        console.log(res);
         setValid(res);
       })
       .catch((err) => {

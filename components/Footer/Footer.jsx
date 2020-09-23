@@ -4,7 +4,7 @@ import CustomButton from "../CustomButton";
 import { useIconHook } from "../../hooks/iconHook";
 
 export default function Footer(props) {
-  const logo = useIconHook("logo");
+  const logo = useIconHook("logo2");
   const facebook = useIconHook("facebook");
   const instagram = useIconHook("instagram");
   const viber = useIconHook("viber");
@@ -63,7 +63,7 @@ export default function Footer(props) {
             view={24}
             icon={phone}
           />
-          <p>+63 97777 245 17 (Globe)</p>
+          <p>+63 977 7724 517 (Globe)</p>
         </div>
         <div className="flex">
           <CustomButton
@@ -72,7 +72,7 @@ export default function Footer(props) {
             view={24}
             icon={pin}
           />
-          <p>85 Diego Cera Ave. Las Pinas City</p>
+          <p>88 P. Diego Cera Ave. Las Pinas City</p>
         </div>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d482.88017412593075!2d120.98273742494648!3d14.4823126537737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cdd4139e57f9%3A0xe3cbb6df558a4017!2sRhaul%20Villanueva!5e0!3m2!1sen!2sph!4v1597296641506!5m2!1sen!2sph"

@@ -23,7 +23,6 @@ export const useCheckVoucherHook = (data) => {
       })
       .then((res) => {
         setLoading(false);
-        console.log(res);
         setValid(res);
       })
       .catch((err) => {

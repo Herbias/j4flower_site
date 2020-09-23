@@ -28,12 +28,12 @@ export default function OrderCode(props) {
 
   return (
     <MainLayout>
-      <div className="pl-6 py-1 flex items-center justify-center w-full border-b border-teal-400 bg-gray-200">
+      <div className="pl-6 py-1 flex items-center w-full border-b border-teal-400 bg-gray-200">
         {" "}
         <a className="text-teal-400 capitalize" href="/order">
           Order &#8594; &nbsp;
         </a>
-        <a className="text-teal-400 capitalize">Order example</a>
+        <a className="text-teal-400 capitalize">Order #{ordercode}</a>
       </div>
       <div className="py-2">
         <h1 className="text-center text-2xl font-bold">Order Received</h1>

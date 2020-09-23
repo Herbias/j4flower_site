@@ -22,10 +22,11 @@ const UserLogout = () => {
 const UserLogin = () => {
   return (
     <>
-      {" "}
-      <a className="ml-2 mr-2" href="#">
-        Order
-      </a>
+      <Link href="/order">
+        <a className="ml-2 mr-2" href="#">
+          Order
+        </a>
+      </Link>
       <a className="mr-2" href="#">
         Account
       </a>

@@ -6,7 +6,6 @@ export const useLoginHook = (data) => {
 
   useEffect(() => {
     if (data && !isSuccess) {
-      console.log("creating account");
       setLoading(true);
     }
     // if (data && !isLoading && !isSuccess) setLoading(true);

@@ -23,17 +23,23 @@ const About = (props) => {
         <br />
         <p className="px-32 text-justify indent-4">
           Adrian Manuel Cleofe was once a computer technician in a small town in
-          Albay when he was in highschool. He do troubleshoot computer even
-          mobile phone in the people of Tiwi. He been into the business in
-          troubleshooting when his friend who own a computer rental shop
-          approach him to maintain its rental pc and then customer come in ask
-          to troubleshoot their pc, since then customer come and go and happy
-          for its affordable labor price. In 2010, Adrian move here in Las Piñas
-          to take college degree, where he gained a Bachelor's of Science in
-          Computer Science at STI College Las Piñas, then he was able to save
-          money to start a shop. He build AppyGo Computer Store to make its
-          service affordable on customer budget. We also ensure that every
-          product is brand-new and warranty is direct from manufacturers.
+          Albay during weekends, as a part time job, when he was in High School.
+          He troubleshoots computer and mobile phone in Tiwi, Albay. His
+          hands-on experience started from a friend who owns an internet café
+          that got him a job maintaining computer in the internet café. Since
+          then people would ask for his services which be charges with
+          affordable fees that made his customer happy and satisfied.
+        </p>
+        <br />
+        <p className="px-32 text-justify indent-4">
+          In 2010 Adrian moved to Las Piñas to take his college degree in
+          Bachelors of Science in Computer Science at STI College - Las Piñas.
+          He worked as a software engineer at a software development company in
+          Parañaque City where he was able to save some money to start the store
+          that he dreams of. He built AppyGo Computer Store that aims to give
+          quality, affordable computer and services to its customer with the
+          assurance that all its product is branded and with warranty direct
+          from its manufacturer.
         </p>
       </div>
       <br />
@@ -43,15 +49,11 @@ const About = (props) => {
           What we do?
         </h1>
         <br />
-        <p class="px-32 text-justify indent-4">
-          Computer services is our specialty from selling computer component and
-          peripheral, aside from selling we cater repair and troubleshooting and
-          software development or as long as customer request is in personnel
-          extent of its knowledge. <br /> <br />
+        <p className="px-32 text-justify indent-4">
+          Computer Services is the specialty of the store from selling computer
+          component and peripherals. We also repair, troubleshoot and do
+          software development customized to cater to customer’s need.
         </p>
-        <span className="text-center">
-          We also offer remittance, bill payment and mobile load.
-        </span>
       </div>
       <br />
       <div className="mx-12 pb-6 text-center border border-teal-200">

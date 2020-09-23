@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export const useDeleteFromCartHook = (data) => {
   const [isLoading, setLoading] = useState(false);
-  const [isSuccess, setSuccess] = useState(false);
+  const [isSuccess, setSuccess] = useState(null);
 
   const user = useSelector((state) => state.UserReducer);
 
@@ -39,7 +39,7 @@ export const useDeleteFromCartHook = (data) => {
   }, [isLoading]);
 
   useEffect(() => {
-    if (isSuccess) setLoading(false);
+    setLoading(false);
   }, [isSuccess]);
 
   return [isLoading, isSuccess];

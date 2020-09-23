@@ -4,11 +4,13 @@
     background: linear-gradient(to bottom, #38dbef 0%, #20d1c3 100%);
   }
 
-  .dropdown-button:hover .dropdown-content {
+  .dropdown-button:hover .dropdown-content,
+  .cctv-dropdown:hover .cctv-dropdown-content {
     display: block;
     visibility: visible;
   }
-  .dropdown-content {
+  .dropdown-content,
+  .cctv-dropdown-content {
     /* display: none; */
     visibility: hidden;
   }

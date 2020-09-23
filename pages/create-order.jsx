@@ -1,15 +1,19 @@
 import MainLayout from "../layouts/MainLayout";
 import Signup from "../components/Signup";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ShippingDetails from "../components/ShippingDetails";
 import Order from "../components/Order/Order";
 import { useState, useEffect } from "react";
 import { useCreateOrderHook } from "../hooks/createOrderHook";
 import { useRouter } from "next/router";
 
+import { UpdateCartItems } from "../redux/actions/CartAction";
+
 export default function CreateOrder(props) {
   const router = useRouter();
   const user = useSelector((state) => state.UserReducer);
+  const dispatch = useDispatch();
+
   const [delivery, setDelivery] = useState(true);
   const [placeOrder, setPlaceOrder] = useState(false);
   const [data, setData] = useState(null);
@@ -22,6 +26,7 @@ export default function CreateOrder(props) {
   useEffect(() => {
     if (createSuccess) {
       localStorage.removeItem("order");
+      dispatch(UpdateCartItems(createSuccess.count));
       router.push("/order/" + createSuccess.ordercode);
     }
   }, [createSuccess]);
@@ -29,8 +34,7 @@ export default function CreateOrder(props) {
   return (
     <MainLayout>
       <div className="pl-6 py-1 flex items-center w-full border-b border-teal-400 bg-gray-200">
-        {" "}
-        <a className="text-teal-400 capitalize" href="/cart">
+        <a className="text-teal-400 capitalize" href="/order">
           Order &#8594; &nbsp;
         </a>
         <a className="text-teal-400 capitalize">Create Order</a>

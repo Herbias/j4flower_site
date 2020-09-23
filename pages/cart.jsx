@@ -87,11 +87,6 @@ export default function Cart(props) {
     deleteItem ? deleteItem : null
   );
 
-  // const createOrder = useCreateOrderHook(
-  //   placeOrder ? { selectedItems, appliedVoucher } : null,
-  //   placeOrder && softwareInstallation ? true : false
-  // );
-
   const selectAllRef = useRef();
 
   const installationData = {
@@ -142,7 +137,6 @@ export default function Cart(props) {
   }, [selectAllClicked]);
 
   useEffect(() => {
-    console.log(selectAll);
     if (cartItem)
       setSelectedItems(
         cartItem.map((elm) => {
@@ -152,11 +146,6 @@ export default function Cart(props) {
   }, [selectAll]);
 
   useEffect(() => {
-    // setSelectedItems(
-    //   selectedItems.filter((elm) => {
-    //     return elm[Object.keys(elm)[0]] == true;
-    //   })
-    // );
     setOrderList(
       selectedItems.filter((elm) => {
         return elm[Object.keys(elm)[0]] == true;
@@ -171,7 +160,6 @@ export default function Cart(props) {
           return elm.data.name != deleteItem.name;
         })
       );
-      // setDeleteItem(null);
     }
   }, [deleteItem]);
 
@@ -208,10 +196,6 @@ export default function Cart(props) {
       router.push("/create-order");
     }
   }, [placeOrder]);
-
-  // const HandleSelectAll
-
-  console.log(appliedVoucher);
 
   const HandleSelect = (name, checked, data) => {
     selectAllRef.current.checked = false;
@@ -270,7 +254,8 @@ export default function Cart(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {selectedItems &&
+                  {!isLoading &&
+                    selectedItems &&
                     selectedItems.map((elm, index) => {
                       return (
                         <CartItem

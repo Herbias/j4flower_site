@@ -17,6 +17,7 @@ export const useUpdateQuantity = (data) => {
   }, [data]);
 
   useEffect(() => {
+    const abortController = new AbortController();
     if (isLoading) {
       data["user"] = user.isLogin
         ? { id: user.data.userid, type: "registered" }
@@ -28,6 +29,7 @@ export const useUpdateQuantity = (data) => {
         body: JSON.stringify({
           data,
         }),
+        signal: abortController.signal,
       })
         .then((res) => {
           try {
@@ -40,71 +42,18 @@ export const useUpdateQuantity = (data) => {
         })
         .then((res) => {
           setSuccess(res);
+        })
+        .catch((e) => {
+          return;
         });
     }
+
+    return () => abortController.abort();
   }, [isLoading]);
 
   useEffect(() => {
-    console.log(isSuccess);
     if (isSuccess) setLoading(false);
   }, [isSuccess]);
 
   return [isLoading, isSuccess];
 };
-
-// import { useState, useEffect } from "react";
-// import fetch from "isomorphic-unfetch";
-
-// import { useSelector, useDispatch } from "react-redux";
-// import { ToUpdate } from "../redux/actions/CartAction";
-
-// export const useUpdateQuantity = (data) => {
-//   const cart = useSelector((state) => state.CartReducer);
-//   const dispatch = useDispatch;
-
-//   const [isLoading, setLoading] = useState(false);
-//   const [isSuccess, setSuccess] = useState(false);
-
-//   useEffect(() => {
-//     setLoading(true);
-//     add();
-//   }, [cart]);
-
-//   const add = async () => {
-//     if (isLoading && cart.product.name == data.name) {
-//       sendRequest(cart.product).then((data) => setSuccess(true));
-//       setLoading(false);
-//     }
-//   };
-
-//   const sendRequest = (data) => {
-//     data["user"] = { id: localStorage.getItem("guestId"), type: "guest" };
-//     data["quantity"] = cart.quantity > 0 ? cart.quantity : 1;
-
-//     return new Promise((resolve, err) => {
-//       fetch(`http://localhost:3001/update/cart`, {
-//         method: "PUT",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           data,
-//         }),
-//       })
-//         .then((res) => {
-//           try {
-//             if (res.status == 200) {
-//               return res.json();
-//             }
-//           } catch (err) {
-//             console.warn(err);
-//           }
-//         })
-//         .then((res) => {
-//           resolve(res);
-//         });
-//     });
-//   };
-
-//   // if (isLoading && isSuccess) dispatch(ToUpdate(false));
-
-//   return [isLoading, isSuccess];
-// };

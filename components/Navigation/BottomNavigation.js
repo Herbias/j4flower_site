@@ -12,7 +12,27 @@ function BottomNavigation({ props }) {
             Voltage Regulator
           </a>
           <a className="block py-2 px-4 border-b border-teal-300">Printer</a>
-          <a className="block py-2 px-4">Accessories</a>
+          <a className="block py-2 border-b border-teal-300 px-4">
+            Accessories
+          </a>
+          <div className="cctv-dropdown block py-2 px-4 relative">
+            <span>CCTV</span>
+            <div className="cctv-dropdown-content w-full float-right -mt-0 ml-48 absolute top-0 left-0 bg-white text-md text-teal-500 font-normal border border-teal-300">
+              <Link href="/shop/cctvkit/">
+                <a className="block py-2 px-4 border-b border-teal-300">Kit</a>
+              </Link>
+              <Link href="/shop/cctvcamera/">
+                <a className="block py-2 px-4 border-b border-teal-300">
+                  Camera
+                </a>
+              </Link>
+              <Link href="/shop/cctvvideorecorder/">
+                <a className="block py-2 px-4 border-b border-teal-300">
+                  Video Recorder
+                </a>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
       <div className="py-2 px-4 text-teal-400">Set</div>
@@ -20,18 +40,30 @@ function BottomNavigation({ props }) {
       <Link href="/motherboard">
         <a className="py-2 px-4 text-teal-400">Motherboard</a>
       </Link>
-
-      <div className="py-2 px-4 text-teal-400">Processor</div>
+      <Link href="/cpu">
+        <a className="py-2 px-4 text-teal-400">Processor</a>
+      </Link>
       <Link href="/ram">
         <a className="py-2 px-4 text-teal-400">Memory</a>
       </Link>
-
-      <div className="py-2 px-4 text-teal-400">Storage</div>
-      <div className="py-2 px-4 text-teal-400">Video Card</div>
-      <div className="py-2 px-4 text-teal-400">Power Supply</div>
-      <div className="py-2 px-4 text-teal-400">Cooler</div>
-      <div className="py-2 px-4 text-teal-400">Case</div>
-      <div className="py-2 px-4 text-teal-400">Monitor</div>
+      <Link href="/storage">
+        <a className="py-2 px-4 text-teal-400">Storage</a>
+      </Link>
+      <Link href="/gpu">
+        <a className="py-2 px-4 text-teal-400">Video Card</a>
+      </Link>
+      <Link href="/psu">
+        <a className="py-2 px-4 text-teal-400">Power Supply</a>
+      </Link>
+      <Link href="/cooler">
+        <a className="py-2 px-4 text-teal-400">Cooler</a>
+      </Link>
+      <Link href="/case">
+        <a className="py-2 px-4 text-teal-400">Case</a>
+      </Link>
+      <Link href="/monitor">
+        <div className="py-2 px-4 text-teal-400">Monitor</div>
+      </Link>
     </div>
   );
 }

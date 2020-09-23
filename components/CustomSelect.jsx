@@ -5,7 +5,9 @@ const DisplayBox = (props) => {
   return (
     <div className="flex overflow-visible" onClick={(e) => Display(true)}>
       <p className="w-32 px-2 bg-gray-200 border border-grey-200 hover:bg-blue-200">
-        {selected}
+        {typeof selected == "number" && selected == 0 && "No"}
+        {typeof selected == "number" && selected == 1 && "Yes"}
+        {typeof selected == "string" && `${selected}`}
       </p>
       <div className="text-gray-600 inline-block border border-grey-200 cursor-pointer cursor-pointer hover:text-blue-200">
         <svg
@@ -43,7 +45,9 @@ const OptionBox = (props) => {
                 handleChange(name, elm.name);
               }}
             >
-              {elm.name}
+              {typeof elm.name == "number" && elm.name == 0 && "No"}
+              {typeof elm.name == "number" && elm.name == 1 && "Yes"}
+              {typeof elm.name == "string" && `${elm.name}`}
             </p>
           );
         })}

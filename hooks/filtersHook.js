@@ -18,7 +18,6 @@ export const useFiltersHook = (category) => {
   }
 
   useEffect(() => {
-    console.log("filterProductHook is loading");
     setLoading(true);
   }, [category]);
 

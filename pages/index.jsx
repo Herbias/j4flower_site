@@ -68,13 +68,10 @@ const Index = (props) => {
       </QuickBuild>
       <div className="w-full my-10 p-2 shadow-md">
         <div className="flex flex-wrap justify-center items-center m-auto">
-          <img className="w-auto h-32 px-4 py-6" src="/brand/intel.png" />
-          <img className="w-auto h-32 px-4 py-6" src="/brand/amd.png" />
-          <img className="w-auto h-32 px-4 py-6" src="/brand/gigabyte.svg" />
-          <img className="w-auto h-32 px-4 py-6" src="/brand/msi.png" />
-          <img className="w-auto h-32 px-4 py-6" src="/brand/asus.png" />
-          <img className="w-auto h-32 px-4 py-6" src="/brand/xigmatek.png" />
-          <img className="w-auto h-32 px-4 py-6" src="/brand/gskill.jpg" />
+          <img className="w-auto h-32 px-4 py-6" src="/brand/tt.png" />
+          <img className="w-auto h-32 px-4 py-6" src="/brand/hikvision.png" />
+          <img className="w-auto h-32 px-4 py-6" src="/brand/wd.png" />
+          <img className="w-auto h-32 px-4 py-6" src="/brand/SilverStone.png" />
         </div>
         <h3 className="text-center text-4xl text-teal-500 font-black">
           Many more to come...

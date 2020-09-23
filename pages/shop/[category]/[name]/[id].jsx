@@ -9,6 +9,15 @@ import { useAddToCartHook } from "../../../../hooks/addToCartHook";
 
 import Link from "next/link";
 
+const FilterValue = ({ value }) => {
+  return (
+    <>
+      {typeof value == "number" && `${value ? "Yes" : "No"}`}
+      {typeof value == "string" && `${value}`}
+    </>
+  );
+};
+
 const ProductPage = (props) => {
   const backButton = useIconHook("chevronLeft");
   const cartIcon = useIconHook("cart");
@@ -21,7 +30,6 @@ const ProductPage = (props) => {
   const [loading, success] = useAddToCartHook(addItem ? addItem : null);
 
   const addToCart = (toUpdate, quantity, data) => {
-    console.log(data);
     setAddItem(data);
     dispatach(AddToCart(toUpdate, quantity, data));
   };
@@ -33,12 +41,6 @@ const ProductPage = (props) => {
   return (
     <MainLayout>
       <div className="flex items-center border-b border-teal-400 bg-gray-200">
-        <CustomButton
-          classNames="flex w-16 h-10 p-full ml-6 bg-teal-300 text-white cursor-pointer"
-          size="10"
-          view="24"
-          icon={backButton}
-        />
         <div className="flex items-center w-full pl-4">
           {" "}
           <a className="text-teal-400 capitalize" href="/">
@@ -54,7 +56,8 @@ const ProductPage = (props) => {
       </div>
       <div className="flex m-10">
         <div className="w-1/2 p-10">
-          <img src={`/product/${props.product["image"]}`} />
+          {/* <img src={`/product/${props.product["image"]}`} /> */}
+          <img src={`data:image/png;base64,${props.product["image"]}`} />
         </div>
         <div className="w-1/2 border border-teal-400">
           <div className="w-full px-10 border-teal-400 border-b bg-teal-400 text-white">
@@ -69,7 +72,19 @@ const ProductPage = (props) => {
                 return (
                   <li className="capitalize ml-2" key={index}>
                     <span className="mr-2 font-bold">{`${elm.table}:`}</span>
-                    {` ${props.product[elm.table]}`}
+                    <FilterValue value={props.product[elm.table]} />
+                    {/* {!props.product[elm.table] &&
+                      ` ${
+                        props.product[elm.table] == 0
+                          ? "No"
+                          : props.product[elm.table]
+                      }`}
+                    {props.product[elm.table] &&
+                      ` ${
+                        props.product[elm.table] == 1
+                          ? "Yes"
+                          : props.product[elm.table]
+                      }`} */}
                   </li>
                 );
               })}
@@ -107,6 +122,7 @@ const ProductPage = (props) => {
                 <span className="text-teal-400 mx-2">Add To Cart</span>
               </div>
             </div>
+            <br />
           </div>
         </div>
       </div>

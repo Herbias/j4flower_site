@@ -3,17 +3,13 @@ import CustomButton from "../CustomButton";
 
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  AddToCart,
-  ToUpdate,
-  UpdateCartItems,
-} from "../../redux/actions/CartAction";
+import { AddToCart, UpdateCartItems } from "../../redux/actions/CartAction";
 import { useAddToCartHook } from "../../hooks/addToCartHook";
 import { useEffect, useState } from "react";
 
 const ProductCard = (props) => {
   const { name, image, price, index, data } = props;
-  const heartIcon = useIconHook("heart");
+  const cartIcon = useIconHook("cart");
 
   const cart = useSelector((state) => state.CartReducer);
   const dispatch = useDispatch();
@@ -37,12 +33,22 @@ const ProductCard = (props) => {
       key={index}
       className="w-40 h-auto mx-4 my-2 bg-white border border-white"
     >
-      <img className="object-contain h-40" src={`/product/${image}`} />
+      <img />
+      {/* <img
+        className="object-contain h-40"
+        src={`data:image/png;base64,${image}`}
+      /> */}
+
+      <img
+        className="object-contain h-40"
+        src={`http://localhost/appygo/image/${data.categoryName}/${data.image}`}
+      />
       <div className="p-2 m-auto text-center">
         <Link
-          href={`/shop/${data.categoryName}/${data.name.replace(/\s/g, "-")}/${
-            data.id
-          }`}
+          href={`/shop/${data.categoryName}/${data.name.replace(
+            /\s|\//g,
+            "-"
+          )}/${data.id}`}
         >
           <a>
             <h4 className="truncate">{name && name}</h4>
@@ -60,7 +66,7 @@ const ProductCard = (props) => {
             classNames="flex w-40 h-8 p-full bg-teal-300 text-white border-2 border-white cursor-pointer"
             size="5"
             view="20"
-            icon={heartIcon}
+            icon={cartIcon}
             data={data}
           />
         </div>

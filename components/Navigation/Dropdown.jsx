@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useGetCartItem } from "../../hooks/getCartItemHook";
 import { useState, useEffect } from "react";
-import { AddToCart, ToUpdate } from "../../redux/actions/CartAction";
+import { AddToCart, UpdateCartItems } from "../../redux/actions/CartAction";
 import { useUpdateQuantity } from "../../hooks/updateQuantityHook";
 
 import Link from "next/link";
+import { useDeleteFromCartHook } from "../../hooks/deleteFromCartHook";
 
 const NoItem = (props) => {
   const { title } = props;
@@ -18,13 +19,14 @@ const NoItem = (props) => {
 };
 
 const Item = (props) => {
-  const { name, price, image, quantity, data } = props;
+  const { name, price, image, quantity, data, Delete } = props;
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
 
   const [changeQuanty, setChangeQuantity] = useState(false);
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
+
   const [loading, success] = useUpdateQuantity(data);
 
   useEffect(() => {
@@ -47,7 +49,10 @@ const Item = (props) => {
         </Link>
 
         <div className="flex ">
-          <img className="w-10 h-10 mr-1" src={`/product/${image}`} />
+          <img
+            className="w-10 h-10 mr-1"
+            src={`data:image/png;base64,${image}`}
+          />
           <span className="text-left text-xs text-gray-600">
             description, lorem ipsum, dorseit.
           </span>
@@ -76,7 +81,9 @@ const Item = (props) => {
           >
             OK
           </button>
-          <button className="w-1/2 p-2 btn border">Delete</button>
+          <button onClick={() => Delete(data)} className="w-1/2 p-2 btn border">
+            Delete
+          </button>
         </div>
       </div>
     </div>
@@ -84,24 +91,47 @@ const Item = (props) => {
 };
 
 const Dropdown = (props) => {
-  const { title, Show, Hide } = props;
+  const { title, items } = props;
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer);
+  const ui = useSelector((state) => state.UserInterfaceReducer);
+
+  const [mounted, setMounted] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(null);
 
   const [isLoading, cartItem] = useGetCartItem();
+  const [deleting, deleted] = useDeleteFromCartHook(
+    deleteItem ? deleteItem : null
+  );
 
-  const [items, setItems] = useState(null);
+  let total = 0;
+  if (cartItem && cartItem.length > 0)
+    cartItem.forEach((element) => {
+      total = element.price * element.quantity;
+    });
 
   useEffect(() => {
-    if (cartItem) setItems(cartItem);
-  }, [isLoading]);
+    setMounted(true);
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (deleted == undefined || deleted == null || (!deleted && deleted != 0)) {
+      return;
+    } else {
+      console.log(deleted);
+      dispatch(UpdateCartItems(deleted));
+    }
+  }, [deleting]);
+
+  useEffect(() => {
+    console.log(cartItem);
+  }, [cartItem]);
 
   return (
-    <div
-      className="w-64 -ml-16 p-2 absolute left-auto bg-teal-400 z-50"
-      // onMouseEnter={Show}
-      // onMouseLeave={Hide}
-    >
+    <div className="dropdown-content w-64 -ml-16 p-2 absolute left-auto bg-teal-400 z-50">
       <h3 className="text-left font-bold">{title}</h3>
       {(!cartItem && title == "Wishlist") ||
         (!cartItem && title == "Cart" && <NoItem title={title} />)}
@@ -116,21 +146,17 @@ const Dropdown = (props) => {
               quantity={elm.quantity}
               image={elm.image}
               data={elm}
+              Delete={setDeleteItem}
             />
           );
         })}
-      {/* <h3 className="font-bold">
-        Sub-total:
+      <h3 className="font-bold">
+        Sub-total: &nbsp;
         {Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "PHP",
-        }).format(
-          cartItem &&
-            cartItem.reduce((a, b) => {
-              return a.price * a.quantity + b.price * b.quantity;
-            })
-        )}
-      </h3> */}
+        }).format(total)}
+      </h3>
     </div>
   );
 };
