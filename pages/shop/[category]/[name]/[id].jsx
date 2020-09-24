@@ -56,8 +56,9 @@ const ProductPage = (props) => {
       </div>
       <div className="flex m-10">
         <div className="w-1/2 p-10">
-          {/* <img src={`/product/${props.product["image"]}`} /> */}
-          <img src={`data:image/png;base64,${props.product["image"]}`} />
+          <img
+            src={`http://localhost/appygo/image/${props.product["categoryName"]}/${props.product["image"]}`}
+          />
         </div>
         <div className="w-1/2 border border-teal-400">
           <div className="w-full px-10 border-teal-400 border-b bg-teal-400 text-white">

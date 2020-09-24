@@ -32,7 +32,7 @@ export const useCheckVoucherHook = (data) => {
   }
 
   useEffect(() => {
-    console.log("Component did update");
+    // console.log("Component did update");
   }, [isLoading]);
 
   return [isLoading, valid];

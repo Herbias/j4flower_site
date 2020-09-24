@@ -9,7 +9,7 @@ export const useCheckPromoHook = (data) => {
   }, [data]);
 
   if (checkingPromo) {
-    console.log(data);
+    // console.log(data);
     fetch(`http://localhost:3001/check/promo`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

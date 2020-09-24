@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 const ProductCard = (props) => {
   const { name, image, price, index, data } = props;
+
   const cartIcon = useIconHook("cart");
 
   const cart = useSelector((state) => state.CartReducer);
@@ -33,12 +34,6 @@ const ProductCard = (props) => {
       key={index}
       className="w-40 h-auto mx-4 my-2 bg-white border border-white"
     >
-      <img />
-      {/* <img
-        className="object-contain h-40"
-        src={`data:image/png;base64,${image}`}
-      /> */}
-
       <img
         className="object-contain h-40"
         src={`http://localhost/appygo/image/${data.categoryName}/${data.image}`}

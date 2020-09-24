@@ -63,7 +63,7 @@ const About = (props) => {
         <div className="flex p-8 w-full m-auto justify-between">
           <div>
             <svg
-              class="fill-current h-20 w-20 m-auto p-3 bg-teal-500 rounded-full text-white"
+              className="fill-current h-20 w-20 m-auto p-3 bg-teal-500 rounded-full text-white"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -76,7 +76,7 @@ const About = (props) => {
           </div>
           <div>
             <svg
-              class="fill-current h-20 w-20 m-auto p-3 bg-teal-500 rounded-full text-white"
+              className="fill-current h-20 w-20 m-auto p-3 bg-teal-500 rounded-full text-white"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

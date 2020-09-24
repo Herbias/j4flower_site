@@ -1,6 +1,6 @@
 export default function DiscountSectiom(props) {
   const { total, totalDiscount, appliedVoucher } = props;
-  console.log(totalDiscount);
+  // console.log(totalDiscount);
   return (
     <>
       <tr>

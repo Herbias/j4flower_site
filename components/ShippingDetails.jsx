@@ -70,9 +70,9 @@ export default function ShippingDetails(props) {
       : null
   );
 
-  useEffect(() => {
-    console.log("mounting");
-  }, []);
+  // useEffect(() => {
+  //   console.log("mounting");
+  // }, []);
 
   useEffect(() => {
     if (updatedPersonalInformation)

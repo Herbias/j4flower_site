@@ -10,6 +10,8 @@ import { useState, useCallback, useEffect } from "react";
 import { useProductsHook } from "../hooks/productsHook";
 import { useUserManagementHook } from "../hooks/userManagementHook";
 
+import Head from "next/head";
+
 const Index = (props) => {
   const quickBuild = useSelector((state) => state.QuickBuildReducer.quickBuild);
   // let selected = null;
@@ -23,40 +25,18 @@ const Index = (props) => {
     setSelected({ ...selected, [name]: value });
   });
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("guestId"))
-  //     setDeviceData({
-  //       os: window.navigator.oscpu,
-  //       browser: window.navigator.userAgent,
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   if (deviceData) socket.emit("visit", deviceData);
-  // }, [deviceData]);
-
-  // useEffect(() => {
-  //   socket.on("visitor", (data) => {
-  //     if (!localStorage.getItem("guestId"))
-  //       localStorage.setItem("guestId", data);
-  //   });
-  // });
-
   useEffect(() => {
     setSelected(null);
   }, [quickBuild.category]);
 
-  // useEffect(() => {
-  //   console.log(selected);
-  //   console.log(products);
-  // });
-
-  // useEffect(() => {
-  //   console.log(products);
-  // }, [products]);
-
   return (
     <MainLayout>
+      <Head>
+        <title>
+          Best Computer Store in Bamboo Organ - AppyGo Computer Store and
+          Services
+        </title>
+      </Head>
       <CarouselLayout />
       <QuickBuild>
         <Filter

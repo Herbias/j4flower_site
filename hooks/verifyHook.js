@@ -29,7 +29,7 @@ export const useVerifyHook = (name, value) => {
   }
 
   useEffect(() => {
-    console.log("Component did update");
+    // console.log("Component did update");
   }, [isLoading]);
 
   return [isLoading, valid];

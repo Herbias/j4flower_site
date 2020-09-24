@@ -55,7 +55,7 @@ const OptionBox = (props) => {
   );
 };
 
-export default function (props) {
+export default function CustomSelect(props) {
   const { handleChange, option, name } = props;
   const [displayOption, setDisplayOption] = useState(false);
 

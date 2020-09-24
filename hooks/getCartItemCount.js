@@ -35,7 +35,7 @@ export const useGetCartItemCount = (isLogin) => {
         setNoOfItems(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setNoOfItems(false);
       });
   }, [isLogin]);

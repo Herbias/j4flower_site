@@ -58,11 +58,16 @@ export default function CarouselLayout(props) {
     });
   };
 
+  console.log(slides);
+
   return (
     <div className="relative bg-white">
-      <CarouselContent
-        slide={slides && carouselStatus && slides[carouselStatus.current]}
-      />
+      {slides && slides.length > 0 && (
+        <CarouselContent
+          slide={slides && carouselStatus && slides[carouselStatus.current]}
+        />
+      )}
+
       <CarouseControl
         status={carouselStatus && carouselStatus}
         length={slides && slides.length}

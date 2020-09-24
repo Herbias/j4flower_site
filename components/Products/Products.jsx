@@ -2,7 +2,6 @@ import ProductCard from "./ProductCard";
 
 const Product = (props) => {
   const { selected, products } = props;
-
   return (
     <div className="h-1/2 flex flex-wrap p-5 relative">
       {products &&

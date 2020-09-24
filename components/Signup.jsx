@@ -67,9 +67,9 @@ export default function Signup(props) {
     if (userInfo) dispatch(DoLogin(true, userInfo));
   }, [userInfo]);
 
-  useEffect(() => {
-    console.log("mounting");
-  }, []);
+  // useEffect(() => {
+  //   console.log("mounting");
+  // }, []);
 
   useEffect(() => {
     if (
