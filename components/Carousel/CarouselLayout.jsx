@@ -58,8 +58,6 @@ export default function CarouselLayout(props) {
     });
   };
 
-  console.log(slides);
-
   return (
     <div className="relative bg-white">
       {slides && slides.length > 0 && (
