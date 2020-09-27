@@ -51,7 +51,7 @@ const Item = (props) => {
         <div className="flex ">
           <img
             className="w-10 h-10 mr-1"
-            src={`http://assets.appygo.io/image/${data["categoryName"]}/${data["image"]}`}
+            src={`https://assets.appygo.io/image/${data["categoryName"]}/${data["image"]}`}
           />
           <span className="text-left text-xs text-gray-600">
             description, lorem ipsum, dorseit.

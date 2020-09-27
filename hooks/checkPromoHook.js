@@ -10,7 +10,7 @@ export const useCheckPromoHook = (data) => {
 
   if (checkingPromo) {
     // console.log(data);
-    fetch(`http://api.appygo.io/check/promo`, {
+    fetch(`https://api.appygo.io/check/promo`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

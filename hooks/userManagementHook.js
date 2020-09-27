@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { DoLogin } from "../redux/actions/UserAction";
 
-const ENDPOINT = "http://api.appygo.io";
+const ENDPOINT = "https://api.appygo.io";
 const socket = socketIOClient(ENDPOINT);
 
 export const useUserManagementHook = () => {

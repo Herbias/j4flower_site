@@ -13,7 +13,7 @@ export const useCheckVoucherHook = (data) => {
   }, [data]);
 
   if (isLoading) {
-    fetch(`http://api.appygo.io/check/voucher?voucherCode=${data}`)
+    fetch(`https://api.appygo.io/check/voucher?voucherCode=${data}`)
       .then((res) => {
         try {
           return res.json();

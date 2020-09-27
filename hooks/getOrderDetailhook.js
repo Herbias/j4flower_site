@@ -16,7 +16,7 @@ export const useGetOrderDeatilHook = (data) => {
     if (isLoading) {
       data["userid"] = user.data.userid;
 
-      fetch(`http://api.appygo.io/get/order/detail`, {
+      fetch(`https://api.appygo.io/get/order/detail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

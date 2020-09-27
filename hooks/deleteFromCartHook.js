@@ -18,7 +18,7 @@ export const useDeleteFromCartHook = (data) => {
       data["user"] = user.isLogin
         ? { id: user.data.userid, type: "registered" }
         : { id: localStorage.getItem("guestId"), type: "guest" };
-      fetch(`http://api.appygo.io/delete/cart`, {
+      fetch(`https://api.appygo.io/delete/cart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

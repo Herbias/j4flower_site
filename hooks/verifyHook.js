@@ -10,7 +10,7 @@ export const useVerifyHook = (name, value) => {
   }, [value]);
 
   if (isLoading) {
-    fetch(`http://api.appygo.io/check/${name}?value=${value}`)
+    fetch(`https://api.appygo.io/check/${name}?value=${value}`)
       .then((res) => {
         try {
           return res.json();

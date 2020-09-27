@@ -24,7 +24,7 @@ export const useAddToCartHook = (data) => {
         ? { id: user.data.userid, type: "registered" }
         : { id: localStorage.getItem("guestId"), type: "guest" };
       data["quantity"] = cart.quantity;
-      fetch(`http://api.appygo.io/add/cart`, {
+      fetch(`https://api.appygo.io/add/cart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

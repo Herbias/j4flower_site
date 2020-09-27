@@ -13,7 +13,7 @@ export const useLoginHook = (data) => {
 
   useEffect(() => {
     if (isLoading)
-      fetch(`http://api.appygo.io/login`, {
+      fetch(`https://api.appygo.io/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

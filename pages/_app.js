@@ -6,7 +6,7 @@ import { wrapper } from "../redux/store/store";
 
 // import socketIOClient from "socket.io-client";
 
-// const ENDPOINT = "http://api.appygo.io";
+// const ENDPOINT = "https://api.appygo.io";
 // const socket = socketIOClient(ENDPOINT);
 
 const MyApp = (props) => {

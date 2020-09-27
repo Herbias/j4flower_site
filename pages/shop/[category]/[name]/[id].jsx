@@ -57,7 +57,7 @@ const ProductPage = (props) => {
       <div className="flex m-10">
         <div className="w-1/2 p-10">
           <img
-            src={`http://assets.appygo.io/image/${props.product["categoryName"]}/${props.product["image"]}`}
+            src={`https://assets.appygo.io/image/${props.product["categoryName"]}/${props.product["image"]}`}
           />
         </div>
         <div className="w-1/2 border border-teal-400">
@@ -142,7 +142,7 @@ ProductPage.getInitialProps = async (ctx) => {
     query.push(`${elm}=${ctx.query[elm]}`);
   });
 
-  let str = `http://api.appygo.io/get/product/detail?${query.join("&")}`;
+  let str = `https://api.appygo.io/get/product/detail?${query.join("&")}`;
 
   const res = await fetch(str);
   const json = await res.json();
