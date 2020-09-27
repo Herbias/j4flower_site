@@ -36,7 +36,7 @@ const ProductCard = (props) => {
     >
       <img
         className="object-contain h-40"
-        src={`http://localhost/appygo/image/${data.categoryName}/${data.image}`}
+        src={`http://assets.appygo.io/appygo/image/${data.categoryName}/${data.image}`}
       />
       <div className="p-2 m-auto text-center">
         <Link

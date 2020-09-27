@@ -23,7 +23,7 @@ export const useUpdateQuantity = (data) => {
         ? { id: user.data.userid, type: "registered" }
         : { id: localStorage.getItem("guestId"), type: "guest" };
       data["quantity"] = cart.quantity;
-      fetch(`http://localhost:3001/update/cart`, {
+      fetch(`http://api.appygo.io/update/cart`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

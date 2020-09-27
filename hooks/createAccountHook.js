@@ -14,7 +14,7 @@ export const useCreateAccountHook = (data) => {
 
   useEffect(() => {
     if (isLoading)
-      fetch(`http://localhost:3001/create/account`, {
+      fetch(`http://api.appygo.io/create/account`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

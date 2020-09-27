@@ -14,7 +14,7 @@ export const useGetOrderHook = (data) => {
 
   useEffect(() => {
     if (isLoading)
-      fetch(`http://localhost:3001/get/order/${user.data.userid}`)
+      fetch(`http://api.appygo.io/get/order/${user.data.userid}`)
         .then((res) => {
           try {
             if (res.status == 200) {

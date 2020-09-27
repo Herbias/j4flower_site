@@ -17,7 +17,7 @@ export const useCreateOrderHook = (data, delivery) => {
       data["userid"] = user.data.userid;
       data["usertype"] = user.isLogin ? "registered" : "guest";
       data["delivery"] = delivery;
-      fetch(`http://localhost:3001/create/order`, {
+      fetch(`http://api.appygo.io/create/order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

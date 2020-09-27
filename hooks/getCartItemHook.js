@@ -30,7 +30,7 @@ export const useGetCartItem = () => {
 
     const fetchData = async () => {
       try {
-        const data = await fetch(`http://localhost:3001/get/cart/items`, {
+        const data = await fetch(`http://api.appygo.io/get/cart/items`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(

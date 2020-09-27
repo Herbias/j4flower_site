@@ -23,7 +23,7 @@ export const useUpdateUserInformation = (name, data) => {
   useEffect(() => {
     if (isLoading) {
       data["userid"] = user.data.userid;
-      fetch(`http://localhost:3001/update/${name}`, {
+      fetch(`http://api.appygo.io/update/${name}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data }),

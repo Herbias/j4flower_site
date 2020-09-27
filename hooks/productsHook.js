@@ -7,7 +7,7 @@ export const useProductsHook = (category, data) => {
 
   useEffect(() => {
     if (category && data == null)
-      fetch(`http://localhost:3001/get/product/` + category)
+      fetch(`http://api.appygo.io/get/product/` + category)
         .then((res) => {
           try {
             return res.json();
@@ -40,7 +40,7 @@ export const useProductsHook = (category, data) => {
 
       let c = b.length > 1 ? b.join("&") : b.join("").trim();
 
-      fetch(`http://localhost:3001/get/product/${category}\?${c}`)
+      fetch(`http://api.appygo.io/get/product/${category}\?${c}`)
         .then((res) => {
           try {
             return res.json();

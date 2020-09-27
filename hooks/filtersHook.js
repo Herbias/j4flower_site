@@ -5,7 +5,7 @@ export const useFiltersHook = (category) => {
   const [isLoading, setLoading] = useState(false);
 
   if (isLoading) {
-    fetch("http://localhost:3001/get/products/filters/" + category)
+    fetch("http://api.appygo.io/get/products/filters/" + category)
       .then((res) => res.json())
       .then((data) => {
         setFilters(data);

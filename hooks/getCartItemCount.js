@@ -9,7 +9,7 @@ export const useGetCartItemCount = (isLogin) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3001/get/cart/itemscount`, {
+    fetch(`http://api.appygo.io/get/cart/itemscount`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
