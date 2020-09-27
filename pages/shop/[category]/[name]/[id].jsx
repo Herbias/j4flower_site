@@ -57,7 +57,7 @@ const ProductPage = (props) => {
       <div className="flex m-10">
         <div className="w-1/2 p-10">
           <img
-            src={`http://assets.appygo.io/appygo/image/${props.product["categoryName"]}/${props.product["image"]}`}
+            src={`http://assets.appygo.io/image/${props.product["categoryName"]}/${props.product["image"]}`}
           />
         </div>
         <div className="w-1/2 border border-teal-400">
