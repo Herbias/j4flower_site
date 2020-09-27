@@ -76,19 +76,20 @@ const QuickBuild = (props) => {
     <>
       <div className="h-32 bg-gray-100 shadow flex items-center content-center justify-center">
         {/* <Items icon={setIcon} title={"Set"} category={"set"} /> */}
-        <Items icon={memoryIcon} title={"RAM"} category={"ram"} />
-        <Items icon={gpuIcon} title={"GPU"} category={"gpu"} />
+        <Items icon={cpuIcon} title={"CPU"} category={"cpu"} />
         <Items
           icon={motherboardIcon}
           title={"M. Board"}
           category={"motherboard"}
         />
-        <Items icon={cpuIcon} title={"CPU"} category={"cpu"} />
+        <Items icon={memoryIcon} title={"RAM"} category={"ram"} />
         <Items icon={storageIcon} title={"Storage"} category={"storage"} />
+        <Items icon={gpuIcon} title={"GPU"} category={"gpu"} />
         <Items icon={psuIcon} title={"PSU"} category={"psu"} />
+        <Items icon={caseIcon} title={"Case"} category={"case"} />
         <Items icon={coolerIcon} title={"Cooler"} category={"cooler"} />
         <Items icon={regulatorIcon} title={"V. Reg."} category={"avr"} />
-        <Items icon={caseIcon} title={"Case"} category={"case"} />
+
         <Items icon={keyboardIcon} title={"K. Board"} category={"keyboard"} />
         <Items icon={mouseIcon} title={"Mouse"} category={"mouse"} />
         <Items icon={monitorIcon} title={"Monitor"} category={"monitor"} />
@@ -97,7 +98,7 @@ const QuickBuild = (props) => {
           title={"Accrs."}
           category={"accessories"}
         />
-        <Items icon={printerIcon} title={"Printer"} category={"printer"} />
+        {/* <Items icon={printerIcon} title={"Printer"} category={"printer"} /> */}
       </div>
       <div className="block w-full bg-gray-300">
         {quickBuild.isOpen && props.children}

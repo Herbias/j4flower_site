@@ -49,7 +49,6 @@ const ProductCard = (props) => {
             <h4 className="truncate">{name && name}</h4>
           </a>
         </Link>
-
         <h6>&#8369;{price && price.toFixed(2)}</h6>
       </div>
       <div

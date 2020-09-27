@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 
 import CustomButton from "../CustomButton";
 import { useIconHook } from "../../hooks/iconHook";
+import Link from "next/link";
 
 export default function Footer(props) {
   const logo = useIconHook("logo2");
@@ -85,6 +86,7 @@ export default function Footer(props) {
         <h6 className="font-bold">Find us on:</h6>
         <div className="flex">
           <div>
+            <a href="http://www.facebook.com/appygostore">
             <CustomButton
               classNames={
                 "mr-2 pt-1 w-8 h-8 border-2 border-white rounded-full"
@@ -93,8 +95,10 @@ export default function Footer(props) {
               view={24}
               icon={facebook}
             />
+            </a>
+
           </div>
-          <CustomButton
+          {/* <CustomButton
             classNames={"mr-2 pt-1 w-8 h-8 border-2 border-white rounded-full"}
             size={5}
             view={24}
@@ -105,7 +109,7 @@ export default function Footer(props) {
             size={5}
             view={24}
             icon={viber}
-          />
+          /> */}
         </div>
       </div>
     </footer>
